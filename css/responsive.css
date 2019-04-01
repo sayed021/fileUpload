@@ -1,0 +1,125 @@
+@media screen and (max-width: 1023px) {
+	#content { padding: 20px 20px 50px 20px; }
+	.sf-wrap .left-search { width: 30%; }
+	.sf-wrap .right-filter .item:not(:first-child) { padding-left: 10px; }
+	.sf-wrap .radios label:not(:last-child) { padding-right: 10px; }
+	.sf-wrap .radios label { font-size: 12px; }
+	.viewby-buttons a:not(:first-child) { margin-left: 0; }
+
+	.user-files .view-grid,
+	.view-data-grid .mis-datatable tbody tr {
+		width: 32%;
+	    margin-right: 2%;
+	    margin-bottom: 20px;
+	}
+	.user-files .view-grid:nth-child(4n+4),
+	.view-data-grid .mis-datatable tbody tr:nth-child(4n+4) {
+	    margin-right: 2%;
+	}
+	.user-files .view-grid:nth-child(3n+3),
+	.view-data-grid .mis-datatable tbody tr:nth-child(3n+3) { margin-right: 0; }
+	.mis-datatable .grid-item-outer .icon img { max-width: 22px; }
+
+	.user-files .icon {
+		left: 10px;
+	}
+	.user-files .grid-item-outer { padding: 20px 30px !important; }
+
+}
+
+@media screen and (min-width: 992px) {
+	.address-bottom .column {
+	    width: 30.6%;
+	}
+	.checkout-name-area .name-field {
+	    width: 48%;
+	}
+}
+@media screen and (max-width: 992px) {
+	.app-header-area .bootstrap-select .btn-primary.dropdown-toggle {
+		min-width: inherit !important;
+		width: 180px;
+		height: 40px;
+	}
+	.app-header-area .bootstrap-select .dropdown-toggle .filter-option {
+		max-width: 100%;
+		padding: 6px 12px 5px 5px;
+	}
+	.app-header-area .bootstrap-select .dropdown-toggle .filter-option-inner img {
+	    width: 23px;
+	    height: 23px;
+	    margin-right: 0;
+	}
+	.app-header-area .bootstrap-select .dropdown-toggle strong { font-size: 12px; }
+	.app-header-area .bootstrap-select .dropdown-toggle:after, 
+	.app-header-area .bootstrap-select.show .dropdown-toggle:after {
+		top: 10px;
+	}
+	.app-header-area .bootstrap-select .dropdown-menu li a span img {
+		width: 23px;
+		height: 23px;
+	}
+	.app-header-area .bootstrap-select .dropdown-menu li a { 
+		font-size: 14px;
+		padding: 8px 5px;
+	}
+	.app-header-area .bs-searchbox .form-control { 
+		font-size: 14px;
+		height: 40px;
+	}
+	.app-header-area .bootstrap-select .dropdown-menu {
+	    min-width: 180px;
+	}
+	.app-header-area h1 {
+		font-size: 18px;
+	}
+	.header-user img {
+		width: 30px;
+		height: 30px;
+	}
+	.bootstrap-select .dropdown-toggle .filter-option { height: 32px; }
+	.mis-datatable tfoot th,
+	.mis-datatable thead th {
+		font-size: 10px;
+		font-weight: 300 !important;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.cart-total-price {
+	    font-size: 35px;
+	}
+	.total-price-wrap a.btn {
+		font-size: 14px;
+		padding: 15px 10px 10px 10px;
+	}
+	.cart-items .item-info { padding-left: 10px; padding-right: 10px; }
+	.cart-items .item-info h3, .cart-items .item-info h4 {
+		font-size: 16px;
+	}
+	.cart-items .item-info .creator { font-size: 12px; }
+}
+
+@media screen and (max-width: 767px) {
+	.app-header-area h1 {
+		font-size: 16px;
+	}
+
+	.app-header-area { padding: 15px 20px; }
+	.app-header-area .bootstrap-select .dropdown-toggle strong {
+		display: none;
+	}
+	.app-header-area .bootstrap-select .btn-primary.dropdown-toggle,
+	.app-header-area .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+		width: 36px;
+	}
+	.header-user span,
+	.app-header-area .bootstrap-select .dropdown-toggle:after, 
+	.app-header-area .bootstrap-select.show .dropdown-toggle:after {
+		display: none;
+	}
+	.center-container { padding: 0 20px; }
+}
+@media screen and (max-width: 550px) {
+	.header-cart { padding-left: 10px; }
+}

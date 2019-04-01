@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>MIS | Home</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+	<link rel="stylesheet" href="vendors/fontawesome/css/all.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="vendors/bs-select/css/bootstrap-select.min.css" />
+
+	<link rel="stylesheet" href="appstyle.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	
+</head>
+<body>
+
+
+	<div id="content">
+		<div class="container-fluid px-0">
+			<div class="row">
+				<div class="content-header col-12 d-flex justify-content-between align-items-center">
+
+					<div class="right-section">
+						 <button class="btn btn-primary btn-sm btn-upload" type="button" data-toggle="collapse" data-target="#upload-wrap" aria-expanded="false" aria-controls="upload-wrap">Upload File</button>
+
+						 <button class="btn btn-sm btn-cancel" type="button" data-toggle="collapse" data-target="#upload-wrap" aria-expanded="true" aria-controls="upload-wrap">Cancel</button>
+					</div>
+				</div>
+
+				<div class="col-12 upload-wrap collapse" id="upload-wrap">
+					<div class="content p-3 bg-white rounded">
+						<form action="#" id="myform" class="d-block w-100 p-0">
+							<input type="file" name="myfile"  />
+							<div class="row">
+								<div class="col-10">
+									<div class="upload-area rounded">
+
+										<div class="fileinput-button dz-clickable text-center" >
+									    	<span class="upload-icon">
+									    		<!-- <input type="file" name="file"  style="display: none;" /> -->
+									    		<img src="images/icon-upload.png" alt="" width="39" height="50" />
+									    	</span>
+									        <strong class="drag-area">Drag your file here or <span>browse</span></strong>
+									    </div>
+
+								    	<div class="files left-upload-area" id="previews">
+						    				<div id="template" class="file-row d-table w-100">
+
+												<div class="left-thumb d-table-cell">
+													<div class="col upload-thumbnil">
+											    		<span class="preview">
+											    			<img src="images/icon-image.png" data-dz-thumbnail alt="" width="32" height="40">
+											    		</span>
+											    	</div>
+												</div> 
+
+												<div class="right-info d-table-cell">
+													<div class="top-area d-flex">
+														<div class="left-text">
+															<strong class="name" data-dz-name>Contract Template.pdf </strong>
+										    		        <span class="up-status">is uploading..</span>
+														</div>
+														<div class="right-action ml-auto">
+															<span class="cancel-button">Cancel</span>
+															<span class="remove-button">Remove</span>
+														</div>
+
+													</div>
+													<div class="progress-area">
+														<div class="progress-outer bg-faded">
+															<div class="bar" data-dz-uploadprogress style="width: 20%"></div>
+														</div>
+													</div>
+												</div>
+						    				</div>
+						    			</div>
+									</div>
+								</div>
+
+								<div class="col-2">
+									<div class="row">
+										
+										<div class="col-12 d-flex justify-content-end upload-button-wrap">
+											<button class="btn btn-primary btn-sm btn-form-upload" id="uploadbutton" type="submit" >Upload</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+	</div>
+	
+
+<script src="vendors/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="vendors/bs-select/js/bootstrap-select.min.js"></script>
+<script src="vendors/jquery-ui/jquery-ui.min.js"></script>
+<script src="vendors/dropzone.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="js/app.js"></script>
+
+
+<script>
+
+
+	var previewNode = document.querySelector("#template");
+	previewNode.id = "";
+	var previewTemplate = previewNode.parentNode.innerHTML;
+	previewNode.parentNode.removeChild(previewNode);
+
+	var container = document.querySelector(".upload-area");
+
+	var myDropzone = new Dropzone(container, {
+		  // paramName: "file",
+		  url: "/target-url",
+		  autoProcessQueue: false,
+    	  uploadMultiple: false,
+		  maxFiles: 1,
+		  parallelUploads: 20,
+		  autoQueue: false, 
+		  previewTemplate: previewTemplate,
+		  previewsContainer: "#previews",
+		  clickable: ".fileinput-button",
+
+	      thumbnail: function(file, dataUrl) {
+	      	  dataUrl='images/icon-image.png';
+	          var thumbnailElement, _i, _len, _ref;
+	          if (file.previewElement) {
+	          file.previewElement.classList.remove("dz-file-preview");
+	          _ref = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+
+	          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+	            thumbnailElement = _ref[_i];
+	            thumbnailElement.alt = file.name;
+
+		            var fileType = file.type; 
+			        if(fileType.indexOf('image') >= 0){
+			        	dataUrl= 'images/icon-image.png';
+				    }else if(fileType.indexOf('pdf') >= 0){
+				    	dataUrl= "images/icon-pdf.png";
+				    }else if(fileType.indexOf('audio') >= 0){
+				    	dataUrl= "images/icon-audio.png";
+				    }else if(fileType.indexOf('video') >= 0){
+				    	dataUrl= "images/icon-video.png";
+				    }else if(fileType.indexOf('sheet') >= 0){
+				    	dataUrl= "images/icon-excel.png";
+				    }else if(fileType.indexOf('msword') >= 0){
+				    	dataUrl= "images/icon-doc.png";
+				    }
+				    else if(fileType.indexOf('html') >= 0){
+				    	dataUrl= "images/icon-html.png";
+				    }else {
+				    	dataUrl= "images/icon-unknown.png";
+				    }
+
+		            thumbnailElement.src = dataUrl;
+		        }
+		          return setTimeout(((function(_this) {
+		            return function() {
+		              return file.previewElement.classList.add("dz-image-preview");
+		            };
+		          })(this)), 1);
+		        }
+        },
+        uploadprogress: function(file, progress, bytesSent) {
+        	//upload-error class and upload-success class add when upload error or success
+		    var progressElement = file.previewElement.querySelector("[data-dz-uploadprogress]");
+	        progressElement.style.width = progress + "%";
+		}
+	});
+
+	myDropzone.on("maxfilesexceeded", function(file) {
+        this.removeAllFiles();
+    });
+
+	myDropzone.on("addedfile", function(file) {  
+	    var fileType = file.type; 
+        if(fileType.indexOf('image') >= 0){
+        	myDropzone.emit("thumbnail", file, "images/icon-image.png");
+	    }else if(fileType.indexOf('pdf') >= 0){
+	    	myDropzone.emit("thumbnail", file, "images/icon-pdf.png");
+	    }else if(fileType.indexOf('audio') >= 0){
+	    	myDropzone.emit("thumbnail", file, "images/icon-audio.png");
+	    }else if(fileType.indexOf('video') >= 0){
+	    	myDropzone.emit("thumbnail", file, "images/icon-video.png");
+	    }else if(fileType.indexOf('sheet') >= 0){
+	    	myDropzone.emit("thumbnail", file, "images/icon-excel.png");
+	    }else if(fileType.indexOf('msword') >= 0){
+	    	myDropzone.emit("thumbnail", file, "images/icon-doc.png");
+	    }
+	    else if(fileType.indexOf('html') >= 0){
+	    	myDropzone.emit("thumbnail", file, "images/icon-html.png");
+	    }else {
+	    	myDropzone.emit("thumbnail", file, "images/icon-unknown.png");
+	    }
+
+	    console.log(file);
+
+	    $(document).find('input[name="myfile"]').files = file;
+	});
+
+	// drag status
+	myDropzone.on("dragenter", function() { 
+		$(document).find('.upload-area').addClass('highlight'); 
+	});
+
+	$('.fileinput-button *').on("dragenter", function() { 
+		$(document).find('.upload-area').addClass('highlight'); 
+	});
+
+	myDropzone.on("drop", function() {
+	   $(document).find('.upload-area').removeClass('highlight');
+	   //others action here for show and hight element
+
+	});
+
+	$(document).on('click', ".cancel-button", function() {
+		$(document).find('.dz-max-files-reached').removeClass('dz-max-files-reached');
+	    myDropzone.removeAllFiles(true);
+	});
+
+	$(document).on('click', "#uploadbutton", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		var x = $('#myform').serialize();
+
+		console.log($('#myform').children('input[name="myfile"]')[0].files[0].name);
+
+		console.log($('#myform').children('input[name="myfile"]')[0].files[0]);
+		
+		console.log(x);
+
+	});
+
+
+</script>
+
+
+</body>
+</html>
+
