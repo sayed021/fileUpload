@@ -3,8 +3,9 @@
 This is a advance fileupload using jquery Dropzonejs and bootstrap.
 
 Normal UI
-![Upload Primary](uploadEmpty.png)
+
+![Upload Primary](images/uploadEmpty.png)
 
 File upload progress UI
 
-![Upload Primary](uploadProgress.png)
+![Upload Primary](images/uploadProgress.png)
